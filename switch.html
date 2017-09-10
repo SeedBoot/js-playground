@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--Some Meta-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oli's playground</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+  <div class="back">
+    <a href="index.html">Back</a>
+  </div>
+
+  <div class="output" style="height: 300px;">
+    <label for="theme">Select theme: </label>
+    <select id="theme">
+      <option value="white">White</option>
+      <option value="black">Black</option>
+      <option value="purple">Purple</option>
+      <option value="yellow">Yellow</option>
+      <option value="psychedelic">Psychedelic</option>
+    </select>
+
+    <h1>This is my website</h1>
+    <p>Gonna ... switch things around!</p>
+  </div>
+
+  <label for="weather">Select the weather type today: </label>
+  <select id="weather">
+    <option value="">--Make a choice--</option>
+    <option value="sunny">Sunny</option>
+    <option value="rainy">Rainy</option>
+    <option value="snowing">Snowing</option>
+    <option value="overcast">Overcast</option>
+  </select>
+
+  <p id="para"></p>
+
+  <script>
+    var theme = document.getElementById('theme');
+    var output = document.querySelector('.output');
+
+    theme.onchange = function() {
+      var choice = theme.value;
+
+      switch (choice) {
+        case 'white':
+          update('white', 'black');
+          break;
+        case 'black':
+          update('black', 'white');
+          break;
+        case 'purple':
+          update('purple', 'white');
+          break;
+        case 'yellow':
+          update('yellow', 'black');
+          break;
+        case 'psychedelic':
+          update('linear-gradient(to right, orange , yellow, green, cyan, blue, violet)', 'black');
+          break;
+        default:
+          update('white', 'black');
+          break;
+      }
+    }
+
+    function update(bgColor, textColor) {
+      output.style.background = bgColor;
+      output.style.color = textColor;
+    }
+
+    const weather = document.getElementById('weather');
+    const para = document.getElementById("para");
+
+    weather.addEventListener('change', setWeather);
+
+    function setWeather() {
+      let choice = weather.value;
+
+      switch (choice) {
+        case 'sunny':
+          para.textContent = 'Boy howdy is it sunny!';
+          break;
+        case 'rainy':
+          para.textContent = "Boo! It's raining!";
+          break;
+        case 'snowing':
+          para.textContent = "Brr! It's mighty cold...";
+          break;
+        case 'overcast':
+          para.textContent = "Miserable weather we're having...";
+          break;
+        default:
+          para.textContent = '';
+      }
+    }
+
+  </script>
+</body>
+</html>

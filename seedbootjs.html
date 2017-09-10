@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!--Some Meta-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oli's playground</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+
+<body>
+  <div class="back">
+    <a href="index.html">Back</a>
+  </div>
+
+  <div>
+    <p id="hey">Hello, this is a for loop:</p>
+    <p id="zumba"></p>
+  </div>
+
+  <div>
+    <p></p>
+  </div>
+  
+  <script src="seedboot.js"></script>
+  <script>
+    var cat = ['Mumba', 'Bilbo', 'Bony', 'Mogget', 'Felice'];
+    var info = "These are my kitties: ";
+
+    for (var i = 0; i < cat.length; i++) {
+      if (i === cat.length - 1) {
+        info += 'and ' + cat[i] + '.';
+      }
+      else {
+        info += cat[i] + ', ';
+      }
+    }
+
+    getId('zumba').textContent = info;
+
+  </script>
+</body>
+
+</html>
