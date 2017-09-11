@@ -15,15 +15,35 @@
     <a href="index.html">Back</a>
   </div>
 
-  <div>
+  <div id="box">
     <p id="hey">Hello, this is a for loop:</p>
     <p id="zumba"></p>
   </div>
 
-  <div>
-    <p></p>
+  <!--USING BREAKS-->
+  <div id="box">
+    <label for="search">Search by contact name: </label>
+    <input id="search" type="text">
+    <button>Search</button>
+    <p id="bPara"></p>
   </div>
-  
+  <div id="box">
+    <label for="select">Contacts for reference: </label>
+    <select id="listyList">
+    </select>
+  </div>
+
+  <!--
+    square root deely
+    AKA continue;
+  -->
+  <div id="box">
+    <label for="numberThing">Enter number: </label>
+    <input type="number" id="num">
+    <button id="btnId">Generate integer squares</button>
+    <p id="sqPara"></p>
+  </div>
+
   <script src="seedboot.js"></script>
   <script>
     var cat = ['Mumba', 'Bilbo', 'Bony', 'Mogget', 'Felice'];
@@ -39,6 +59,72 @@
     }
 
     getId('zumba').textContent = info;
+
+    //
+    //using breaks
+    //
+
+    let contacts = [
+      'Chris:2232322',
+      'Sarah:3453456',
+      'Bill:7654322',
+      'Mary:9998769',
+      'Dianne:9384975'
+    ]
+    let para = getId('bPara');
+    let input = getSelector('input');
+    let btn = getSelector('button');
+
+    btn.addEventListener('click', function() {
+      var searchName = input.value;
+
+      input.value = '';
+      input.focus();
+
+      for (var i=0; i < contacts.length; i++) {
+        var splitContact = contacts[i].split(':');
+        if (splitContact[0] === searchName) {
+          para.textContent = splitContact[0] + '\'s number is ' + splitContact[1] +'.';
+          break;
+        } else {
+          para.textContent = 'Contact not found.'
+        }
+      }
+    });
+
+    //
+    //extra
+    //
+
+    for (var i = 0; i < contacts.length; i++) {
+      let listyList = getId('listyList');
+
+      let opt = document.createElement("option");
+      let node = document.createTextNode(contacts[i]);
+      opt.appendChild(node);
+      listyList.appendChild(opt);
+    }
+
+    //
+    //square root finder
+    //
+
+    let sqPara = getId('sqPara');
+    let num = getId('num');
+    let btnId = getId('btnId');
+
+    btnId.addEventListener('click', function() {
+      let numVar = num.value;
+
+      for (var i = 1; i <= numVar; i++) {
+        var sqRoot = Math.sqrt(i);
+        if (Math.floor(sqRoot) !== sqRoot) {
+          continue;
+        }
+
+        sqPara.textContent += i + ' ';
+      }
+    });
 
   </script>
 </body>
